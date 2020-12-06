@@ -1,0 +1,15 @@
+@use "src/foundation/palette" as palette;
+
+html, body {
+    height: 100%;
+}
+
+body { 
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: palette.$background;
+}
+
+.dropdown-toggle::after {
+    display:none;
+}

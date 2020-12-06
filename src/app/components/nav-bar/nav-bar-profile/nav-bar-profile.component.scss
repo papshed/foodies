@@ -1,0 +1,44 @@
+@use "src/foundation/palette" as palette;
+
+#menu {
+    margin-top: 0.25rem;
+    border: none;
+    background-color: palette.$navbar-accent;
+
+    .dropdown-item {
+        &:hover {
+            background-color: palette.$navbar-accent-hover;
+        }
+    }
+}
+
+#profile-picture {
+    width: 2.5rem;
+}
+
+#toggler {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    .mat-icon {
+        display: inline-block;
+        margin-left: 0.5rem;
+        border-radius: 0.25rem;
+        background-color: palette.$navbar-accent;
+        transition: background-color 0.25s ease;
+    }
+
+    &:hover {
+        .mat-icon {
+            background-color: palette.$navbar-accent-hover;
+        }
+    }
+
+    &:active {
+        .mat-icon {
+            background-color: palette.$navbar-accent-hover;
+        }
+    }
+}

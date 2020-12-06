@@ -1,0 +1,128 @@
+<!-- display < md -->
+<div class="container d-md-none ml-2 mt-2 p-0">
+    <!-- Login Button -->
+    <div
+        class="navbar-nav"
+        *ngIf="(auth.isAuthenticated$ | async) === false"
+    >
+        <button
+            class="btn btn-primary btn-block"
+            id="qsLoginBtn"
+            (click)="loginWithRedirect()"
+        >
+            Log in
+        </button>
+    </div>
+    <!-- Profile List -->
+    <ul
+        class="navbar-nav justify-content-between"
+        *ngIf="auth.user$ | async as user"
+    >
+        <li class="nav-item">
+            <span class="user-info">
+                <!-- Profile image should be set to the profile picture from the id token -->
+                <img
+                    class="nav-user-profile d-inline-block rounded-circle"
+                    id="profile-picture"
+                    [src]="user.picture"
+                    alt="Profile picture"
+                />
+                <!-- Show the user's full name from the id token here -->
+                <h6 class="d-inline-block">{{ user.name }}</h6>
+            </span>
+        </li>
+        <li>
+            <fa-icon
+                [icon]="faUser"
+                class="mr-3"
+            ></fa-icon>
+            <a routerLink="/profile">Profile</a>
+        </li>
+        <li>
+            <fa-icon
+                [icon]="faPowerOff"
+                class="mr-3"
+            ></fa-icon>
+            <button
+                class="btn btn-link p-0"
+                id="qsLogoutBtn"
+                (click)="logout()"
+            >
+                Log out
+            </button>
+        </li>
+    </ul>
+</div>
+
+<!-- display >= md -->
+<div class="navbar-nav d-none d-md-block">
+    <!-- Login Button -->
+    <div
+        class="nav-item"
+        *ngIf="(auth.isAuthenticated$ | async) === false"
+    >
+        <button
+            id="qsLoginBtn"
+            class="btn btn-primary btn-margin"
+            (click)="loginWithRedirect()"
+        >
+            Log in
+        </button>
+    </div>
+    <!-- Profile Dropdown -->
+    <div
+        class="nav-item dropdown"
+        id="profileDropDown"
+        *ngIf="auth.user$ | async as user"
+        ngbDropdown
+    >
+        <div
+            ngbDropdownToggle
+            class="nav-link dropdown-toggle p-0"
+            id="toggler"
+            data-toggle="dropdown"
+        >
+            <img
+                class="nav-user-profile d-inline-block rounded-circle"
+                id="profile-picture"
+                [src]="user.picture"
+                alt="Profile picture"
+            />
+            <mat-icon id="expandProfileIcon">
+                expand_more
+            </mat-icon>
+        </div>
+        <!-- Dropdown menu content -->
+        <div
+            ngbDropdownMenu
+            class="dropdown-menu dropdown-menu-right"
+            id="menu"
+        >
+            <!-- Show the user's full name from the id token here -->
+            <div class="dropdown-header">
+                {{ user.name }}
+            </div>
+            <a
+                routerLink="/profile"
+                class="dropdown-item dropdown-profile"
+            >
+                <fa-icon
+                    [icon]="faUser"
+                    class="mr-3"
+                ></fa-icon> Profile
+            </a>
+            <button
+                (click)="logout()"
+                class="btn btn-link dropdown-item"
+                id="qsLogoutBtn"
+            >
+                <fa-icon
+                    [icon]="faPowerOff"
+                    class="mr-3"
+                ></fa-icon> Log out
+            </button>
+        </div>
+        <!-- Dropdown menu content -->
+    </div>
+    <!-- /Profile Dropdown -->
+</div>

@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-md navbar-light p-2 p-md-3">
+
+	<!-- Logo -->
+	<div class="navbar-brand p-0">
+		<img
+			class="brand"
+			src="/assets/foodies.favicon.png"
+		>
+	</div>
+	<!-- /Logo -->
+
+	<!-- Navbar toggler -->
+	<button
+		class="navbar-toggler"
+		type="button"
+		data-toggle="collapse"
+		data-target="#navbarNav"
+		aria-controls="navbarNav"
+		[attr.aria-expanded]="!isCollapsed"
+		aria-label="Toggle navigation"
+		(click)="isCollapsed = !isCollapsed"
+	>
+		<mat-icon> list </mat-icon>
+	</button>
+	<!-- /Navbar toggler -->
+
+	<!-- Collapsible content -->
+	<div
+		class="collapse navbar-collapse"
+		id="navbarNav"
+		[ngbCollapse]="isCollapsed"
+	>
+
+		<!-- TODO: NavbarLinkComponent with responsive breakpoints. (handle change from horizontal to vertical) -->
+		<!-- Navigation links -->
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a
+					class="nav-link p-0 ml-1"
+					routerLink="/"
+				>Home</a>
+			</li>
+		</ul>
+		<!-- /Navigation links -->
+
+		<app-nav-bar-profile></app-nav-bar-profile>
+
+	</div>
+	<!-- /Collapsible items -->
+
+</nav>

@@ -1,0 +1,18 @@
+<div
+  class="container"
+  *ngIf="auth.isLoading$ | async; else loaded"
+>
+  <app-loading></app-loading>
+</div>
+
+<ng-template #loaded>
+  <div class="p-2 p-sm-3 p-md-4 p-lg-5">
+    <h1 class="ml-1">Your recipes</h1>
+    <div class="d-flex justify-content-around flex-wrap">
+      <recipe-card></recipe-card>
+      <recipe-card></recipe-card>
+      <recipe-card></recipe-card>
+      <recipe-card></recipe-card>
+    </div>
+  </div>
+</ng-template>
